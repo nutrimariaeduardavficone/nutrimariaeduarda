@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutri Maria Eduarda</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg1:#f6eef7;
+--bg2:#d7c3df;
+--bg3:#8a6b99;
+--line:#dcc8b5;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+min-height:100vh;
+background:
+radial-gradient(circle at top left, rgba(255,255,255,0.8), transparent 30%),
+radial-gradient(circle at bottom right, rgba(255,255,255,0.4), transparent 20%),
+linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px 20px;
+}
+
+.site-card{
+width:100%;
+max-width:560px;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(18px);
+border-radius:28px;
+padding:32px 24px;
+box-shadow:0 20px 50px rgba(79,49,90,0.18);
+}
+
+.profile{
+text-align:center;
+}
+
+.avatar-wrap{
+width:104px;
+height:104px;
+margin:auto;
+border-radius:50%;
+background:linear-gradient(135deg,#ffffff,#efe4f4);
+padding:4px;
+box-shadow:0 14px 30px rgba(71,45,86,.18);
+cursor:pointer;
+}
+
+.avatar{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover;
+object-position:center 18%;
+}
+
+h1{
+font-size:2rem;
+font-weight:800;
+margin-top:14px;
+margin-bottom:8px;
+}
+
+.subtitle{
+max-width:440px;
+margin:auto;
+font-size:1rem;
+line-height:1.7;
+margin-bottom:26px;
+}
+
+/* BOX DA LOGO */
+
+.featured{
+border:1.5px solid var(--line);
+border-radius:24px;
+padding:10px;
+margin-bottom:18px;
+}
+
+.logo-panel{
+
+background:white;
+border-radius:18px;
+
+/* altura aumentada */
+height:160px;
+
+/* espaço interno */
+padding:12px 20px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+overflow:hidden;
+
+}
+
+/* LOGO */
+
+.logo-image{
+
+max-height:130px;
+width:auto;
+
+object-fit:contain;
+
+}
+
+/* BOTÕES */
+
+.buttons{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.btn{
+display:flex;
+align-items:center;
+justify-content:center;
+padding:16px;
+border-radius:999px;
+font-weight:600;
+text-decoration:none;
+font-size:1rem;
+}
+
+.btn-secondary{
+background:rgba(160,137,181,.12);
+border:1.5px solid var(--line);
+color:#111;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#25D366,#20b85a);
+color:#fff;
+}
+
+.footer{
+margin-top:22px;
+text-align:center;
+font-size:.82rem;
+color:white;
+}
+
+/* MODAL FOTO */
+
+.photo-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.6);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+visibility:hidden;
+transition:.25s;
+}
+
+.photo-modal.active{
+opacity:1;
+visibility:visible;
+}
+
+.photo-modal img{
+width:340px;
+height:340px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid white;
+}
+
+.photo-close{
+position:absolute;
+top:20px;
+right:20px;
+width:42px;
+height:42px;
+border-radius:50%;
+border:none;
+font-size:22px;
+cursor:pointer;
+}
+
+@media(max-width:640px){
+
+.logo-panel{
+height:140px;
+}
+
+.logo-image{
+max-height:110px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="site-card">
+
+<div class="profile">
+
+<div class="avatar-wrap" id="openPhoto">
+<img src="nutri.jpg" class="avatar">
+</div>
+
+<h1>Nutri.mariaeduarda</h1>
+
+<p class="subtitle">
+Quer melhorar sua alimentação, mas não sabe por onde começar? 🥗
+Conte comigo para te orientar nesse processo de forma leve e personalizada.
+</p>
+
+</div>
+
+<div class="featured">
+
+<div class="logo-panel">
+
+<img src="logo.jpg" class="logo-image">
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn btn-secondary"
+href="mailto:nutrimariaeduardavficone@gmail.com?subject=Contato%20pelo%20site">
+Envie um e-mail para Nutri Maria Eduarda
+</a>
+
+<a class="btn btn-primary"
+href="https://wa.me/5511951524454?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta."
+target="_blank">
+💬 Falar no WhatsApp
+</a>
+
+</div>
+
+<div class="footer">
+© <span id="year"></span> Maria Eduarda Nutricionista
+</div>
+
+</section>
+
+<div class="photo-modal" id="photoModal">
+<button class="photo-close" id="closePhoto">×</button>
+<img src="nutri.jpg">
+</div>
+
+<script>
+
+document.getElementById("year").textContent=new Date().getFullYear()
+
+const openPhoto=document.getElementById("openPhoto")
+const modal=document.getElementById("photoModal")
+const closePhoto=document.getElementById("closePhoto")
+
+openPhoto.onclick=()=>modal.classList.add("active")
+closePhoto.onclick=()=>modal.classList.remove("active")
+
+modal.onclick=(e)=>{
+if(e.target===modal){
+modal.classList.remove("active")
+}
+}
+
+</script>
+
+</body>
+</html>
